@@ -116,11 +116,15 @@ h1, label, fieldset{
 
 /* ##########################   NAVBAR   ########################### */
 #nav{
-    background-color: #F28C4Aff;
+    background: rgb(34, 33, 33);
 }
 
-a, li, ul{
-    color: #fff !important;
+a, li, ul, .welcome{
+    color: #F28C4Aff !important;
+}
+
+button .buttonnav{
+    color: #F28C4Aff !important;
 }
 
 .pimpnav{
@@ -135,10 +139,6 @@ a, li, ul{
     position: relative;
     height: 500px;
     width: 300px;
-    background: #F28C4Aff !important;
-    background: -moz-linear-gradient(left, #ffb76b 0%, #ff7c00 0%, #ff7c00 0%, #ff7c00 22%, #ff7c00 22%, #ffa73d 26%, #ffa73d 66%, #ff7f04 100%) !important;
-    background: -webkit-linear-gradient(left, #ffb76b 0%,#ff7c00 0%,#ff7c00 0%,#ff7c00 22%,#ff7c00 22%,#ffa73d 26%,#ffa73d 66%,#ff7f04 100%) !important;
-    background: linear-gradient(to right, #ffb76b 0%,#ff7c00 0%,#ff7c00 0%,#ff7c00 22%,#ff7c00 22%,#ffa73d 26%,#ffa73d 66%,#ff7f04 100%) !important;
     border-left: 10px solid #F28C4Aff;
     overflow-x:hidden;
 }
@@ -173,7 +173,7 @@ a, li, ul{
     width: 100%;
     display: flex;
     text-decoration: none;
-    color: #fff;
+    color: #F28C4Aff;
 }
 .navigation ul li.active a::before{
     content:'';
@@ -425,7 +425,7 @@ z-index: 9999;
 }
 /* ##########################   LOGIN ########################### */
 #cardTest{
-    background: rgba(255, 255, 255, 0.2) !important;
+    background: rgba(0, 0, 0, 0.2) !important;
     backdrop-filter: blur 30px !important;
     border: 2px solid rgba(255, 255, 255, 0.7) !important;
     border-radius: 10px;

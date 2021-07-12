@@ -24,7 +24,7 @@
     {% for flashError in app.flashes('verify_email_error') %}
         <div class="alert alert-danger" role="alert">{{ flashError }}</div>
     {% endfor %}
-
+    <div id="cardTest">
     <h1>Register</h1>
 
     {{ form_start(registrationForm) }}
@@ -39,7 +39,7 @@
         <button type="submit" class="btn text-dark">Register</button>
         </div>
     {{ form_end(registrationForm) }}
-
+    </div>
     <video poster="{{ asset('img/bg.jpg') }}" id="bgvid" playsinline autoplay muted loop>
 <source src="{{ asset('img/tbconstruhub.webm') }}"type="video/webm">
 <source src="{{ asset('img/tbconstruhub.mp4') }}" type="video/mp4">
