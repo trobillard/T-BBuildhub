@@ -1,0 +1,31 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello FrontController!{% endblock %}
+
+{% block body %}
+
+    <h2>{{project.title}}</h2>
+    <p>{{project.published|date('d/m/Y')}}</p>
+    <div id="rules">
+        <p>{{project.description}}</p>
+    </div>
+
+    {# <h2>Answers</h2> #}
+{# {% if subject.answers %} #}
+    {# {% for answer in subject.answers %} #}
+    {# <p>{{subject.published|date('d/m/Y')}} at {{subject.published|date('H:i')}} by : {{answer.user.firstname ~" "~ answer.user.lastname}}</p> #}
+    {# <div id="rules"> #}
+        {# <p>{{answer.content}}</p> #}
+        {# <a href="{{path('newcomments', {answerId: answer.id})}}" class="btn btn-sm text-dark float-end">Comment</a> #}
+    {# </div> #}
+{# {% for comment in answer.comments %} #}
+    {# <p class="text-white text-italic">{{comment.content}} by {{comment.user.firstname ~" "~ comment.user.lastname}}</p> #}
+    {# {% endfor %} #}
+{# {% endfor %} #}
+{# {% else %} #}
+    {# <div class="alert alert-secondary"> No answer yet </div> #}
+{# {% endif %} #}
+    {# <hr> #}
+    {# <h2>Post an Answer</h2> #}
+    {# {{form(form)}} #}
+{% endblock %}
