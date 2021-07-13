@@ -8,8 +8,7 @@
     .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
 </style>
 
-<div class="example-wrapper">
-    <h1>Hello </h1>
+<div class="example-wrapper mainbg">
     <h2>Project</h2>
 
 
@@ -22,22 +21,26 @@
   {# {% endfor %} #}
   {# Afficher tous les messages flash en session pour l utilisateur connectes #}
     {% for project in projects %}
-    <div class="card" style="width: 20rem;">
-  {# <img src="..." class="card-img-top" alt="..."> #}
-  <div class="card-body">
-    <div class="card-header"><p>Published the {{project.create_date|date('d/m/Y')}}</br> 
-    <h4 class="card-title">{{subject.title}}</h4>
+    <div class="card text-center my-5" id="cardtestorange" style="width: 50rem;">
+    <div class="card-header">
+      <h4 class="card-title">{{project.title}}</h4>
+      <h5 class="card-title">Create the : {{project.createdate|date('d/m/Y')}}</h5>
+    </div>
+    <div class="card-body">
     <p class="card-text">{{project.description}}</p>
-    <p class="card-text">{{project.deadline|date('d/m/Y')}}</p>
-    <a href="{{path('single', {id:project.id})}}" class="btn text-white">
+    <a href="{{path('task_index', {id:project.id})}}" class="btn text-white">
     {#{id: subject.id} me permet d aller sur l ID du sujet sur lequel on a clique  #}
     <span></span>
     <span></span>
     <span></span>
     <span></span>
-    See the Subject</a>
+    Task</a>
+  </div>
+  <div class="card-footer text-muted">
+    Deadline : {{project.deadline|date('d/m/Y')}}
   </div>
 </div>
-        <p></p>
+  {# <img src="..." class="card-img-top" alt="..."> #}
+   
     {% endfor %}
 {% endblock %}

@@ -43,12 +43,6 @@ class Task
     private $deadline;
 
     /**
-     * @ORM\ManyToOne(targetEntity=User::class, inversedBy="tasks")
-     * @ORM\JoinColumn(nullable=false)
-     */
-    private $user;
-
-    /**
      * @ORM\ManyToOne(targetEntity=Project::class, inversedBy="tasks")
      * @ORM\JoinColumn(nullable=false)
      */
@@ -119,17 +113,6 @@ class Task
         return $this;
     }
 
-    public function getUser(): ?User
-    {
-        return $this->user;
-    }
-
-    public function setUser(?User $user): self
-    {
-        $this->user = $user;
-
-        return $this;
-    }
 
     public function getProject(): ?Project
     {
@@ -142,4 +125,5 @@ class Task
 
         return $this;
     }
+
 }

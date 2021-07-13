@@ -104,6 +104,9 @@ textarea {
     margin: 0;
     padding: 0;
 }
+.mainbg{
+    background: #000;
+}
 
 .bg{
     background-image: url(../img/bg.jpg);
@@ -114,13 +117,32 @@ h1, label, fieldset{
     color: #F28C4Aff !important;
 }
 
+h2, p{
+    color: #fff;
+}
+
+footer{
+    background: #000;
+}
+
 /* ##########################   NAVBAR   ########################### */
 #nav{
     background: rgb(34, 33, 33);
 }
 
+.navbar-brand{
+    position: absolute;
+    width: 100%;
+    left: 0;
+    top: 0;
+    text-align: center;
+    margin: auto;
+    z-index: 50;
+}
+
 a, li, ul, .welcome{
     color: #F28C4Aff !important;
+    z-index: 100;
 }
 
 button .buttonnav{
@@ -433,6 +455,14 @@ z-index: 9999;
     margin-top: 20%;
   }
   
+  #cardtestorange{
+    background: rgb(242, 140, 74, 0.9) ;
+    
+    border: 2px solid rgba(255, 255, 255, 0.7) !important;
+    border-radius: 10px;
+    z-index: 30;
+    margin-top: 20%;
+  }
 /* ##################################################################### */
 /* ########################   LARGE DESKTOPS   ######################### */
 /* ##################################################################### */

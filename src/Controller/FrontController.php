@@ -21,7 +21,7 @@ class FrontController extends AbstractController
     public function index(): Response
     {
         $projectRepository = $this->getDoctrine()->getRepository(Project::class);
-        $projects = $projectRepository->findAll();
+        $projects = $this->getUSer()->getProjects();
 
         return $this->render('front/index.html.twig', [
             'projects' => $projects,
@@ -37,11 +37,16 @@ class FrontController extends AbstractController
         $form = $this->createForm(ProjectType::class, $project);
         $form->handleRequest($request);
         if ($form->isSubmitted()&& $form->isValid()) {
-            $project->setCreateDate(new \Date());
+            $project->setCreateDate(new \DateTime());
+            $project->setUser($this->getUser());
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($project);
             $entityManager->flush();
-            return $this->redirectToRoute('task_success');
+            $this->addFlash(
+                "success",
+                "your subject was opened, you just need to wait any answers"
+            );
+            return $this->redirectToRoute('index');
         }
 
         return $this->render('front/newProject.html.twig', [

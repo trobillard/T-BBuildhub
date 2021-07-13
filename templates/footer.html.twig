@@ -1,5 +1,8 @@
+{% if app.user %}
 <footer>
     <section class="text-center my-5">
-        <p><ion-icon name="skull-outline"></ion-icon>© 2021 T^^B. ALL RIGHTS RESERVED.<ion-icon name="skull-outline"></ion-icon></p>
+        <p>© 2021 TㅆB BuildHub. ALL RIGHTS RESERVED.<img src="{{ asset('img/logo-2.png') }}" alt="logo"></p>
     </section>
 </footer>
+{% else %}
+{% endif %}

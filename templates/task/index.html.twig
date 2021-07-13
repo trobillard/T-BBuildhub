@@ -3,41 +3,40 @@
 {% block title %}Task index{% endblock %}
 
 {% block body %}
-    <h1>Task index</h1>
 
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Content</th>
-                <th>Published</th>
-                <th>Status</th>
-                <th>Title</th>
-                <th>Deadline</th>
-                <th>actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for task in tasks %}
-            <tr>
-                <td>{{ task.id }}</td>
-                <td>{{ task.content }}</td>
-                <td>{{ task.published ? task.published|date('Y-m-d H:i:s') : '' }}</td>
-                <td>{{ task.status ? 'Yes' : 'No' }}</td>
-                <td>{{ task.title }}</td>
-                <td>{{ task.deadline ? task.deadline|date('Y-m-d H:i:s') : '' }}</td>
-                <td>
-                    <a href="{{ path('task_show', {'id': task.id}) }}">show</a>
-                    <a href="{{ path('task_edit', {'id': task.id}) }}">edit</a>
-                </td>
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="7">no records found</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
+<div class="example-wrapper mainbg">
+    <h2>Tasks</h2>
 
-    <a href="{{ path('task_new') }}">Create new</a>
+
+   {# {% for label, messages in app.flashes %} #}
+      {# {% for message in messages %} #}
+      {# <div class="alert alert-success {{ label }}"> #}
+        {# {{ message }} #}
+      {# </div> #}
+      {# {% endfor %} #}
+  {# {% endfor %} #}
+  {# Afficher tous les messages flash en session pour l utilisateur connectes #}
+    {% for task in tasks %}
+    <div class="card text-center my-5" id="cardtestorange" style="width: 50rem;">
+    <div class="card-header">
+      <h4 class="card-title">{{task.title}} {{ task.status ? 'Yes' : 'No' }}</h4>
+      <h5 class="card-title">Create the : {{task.published|date('d/m/Y')}}</h5>
+    </div>
+    <div class="card-body">
+    <p class="card-text">{{task.content}}</p>
+    <a href="{{path('task_index', {id:project.id})}}" class="btn text-white">Task</a>
+    <a href="{{ path('task_show', {'id': task.id}) }}" class="btn text-white">show</a>
+    <a href="{{ path('task_edit', {'id': task.id}) }}" class="btn text-white">edit</a>
+    {#{id: subject.id} me permet d aller sur l ID du sujet sur lequel on a clique  #}
+  </div>
+  <div class="card-footer text-muted">
+    Deadline : {{project.deadline|date('d/m/Y')}}
+  </div>
+</div>
+  {# <img src="..." class="card-img-top" alt="..."> #}
+   
+    {% endfor %}
+    <div>
+        <a href="{{ path('task_new') }}" class="btn text-white">Create new</a>
+    </div>
 {% endblock %}
