@@ -9,6 +9,9 @@ use Symfony\Component\Routing\Annotation\Route;
 use App\Entity\Task;
 use App\Form\TaskType;
 use App\Repository\TaskRepository;
+use App\Entity\Project;
+use App\Form\ProjectType;
+use App\Repository\ProjectRepository;
 
 
 
@@ -25,6 +28,16 @@ class TaskController extends AbstractController
     //     ]);
     // }
 
+    #[Route('/user/subjects', name: 'usersubjects')]
+    public function usersubjects(): Response
+    {   
+        $subjects = $this->getUSer()->getSubjects();
+        // bi directionnel donc on peut recuperer juste les sujets de l utilisateur
+        return $this->render('forum/index.html.twig', [
+            "subjects"=> $subjects
+        ]);
+    }
+
     #[Route('/', name: 'task_index', methods: ['GET'])]
     public function index(TaskRepository $taskRepository): Response
     {
@@ -34,50 +47,40 @@ class TaskController extends AbstractController
     }
 
 
-    #[Route('/new', name: 'task_new', methods: ['GET', 'POST'])]
-    public function new(Request $request): Response
+    #[Route('/new/{id}', name: 'task_new', methods: ['GET', 'POST'], requirements: ["id"=>"\d+"])]
+    // "\d+" regex pour dire id d+
+    public function single(int $id=1, ProjectRepository $projectRepository, Request $request): Response
+    // $id=1 est fait pour avoir un parametre par defaut et afficher le post id=1 
+    // SubjectRepository $subjectRepository (injection de service) possible seulement car on a charger la classe dans le controller
     {
+        $project = $projectRepository->find($id);
+        // getSingleSubject methode fait dans le SubjectRepository permet de remplacer la methode find
+        // creation de l objet vide (objet a hydrater)
         $task = new Task();
+        // creation de l objet formulaire sur la base de la classe SubjectType et tu vas hydrater l objet sur la var $subject
         $form = $this->createForm(TaskType::class, $task);
+        // dire au formulaire de traiter la requete (representer par $request) injecter dans new Subject parametre $request
+        // find est une methode du repository qui va chercher par defaut la clef primaire
         $form->handleRequest($request);
-
         if ($form->isSubmitted() && $form->isValid()) {
-            $task->setPublished(new \DateTime());
-            $task->setProject($this->getProject());
+            $task->setPublished(new \DateTime()); 
+            // instancier la date et l heure du jour new \DateTime permet d implementer DateTimeInterface donc de ne pas rentrer la valeur dans le form et de l'obtenir
+            // le \ permet de dire d'aller chercher DateTime a la racine 
+            $task->setProject($project);
+            // On associe au sujet l utilisateur connecte qu on recupere via le controller
             $entityManager = $this->getDoctrine()->getManager();
+            // je vais chercher l entityManager , le manager de doctrine que j enregistre dans une variable
             $entityManager->persist($task);
+            // persist prepare l enregistrement en bdd
             $entityManager->flush();
-
-            return $this->redirectToRoute('task_index', [], Response::HTTP_SEE_OTHER);
+            // le flush permet l enregistrement en bdd / le flush fait un commit pour valider
+            return $this->redirectToRoute('index');
         }
-
-        return $this->renderForm('task/new.html.twig', [
-            'task' => $task,
-            'form' => $form,
-        ]);
+        return $this->render('task/new.html.twig', [
+            "task" => $task,
+            "form" => $form->createView()
+            ]);
     }
-
-    // #[Route('/new', name: 'task_new', methods: ['GET', 'POST'])]
-    // public function new(Request $request): Response
-    // {
-    //     $task = new Task();
-    //     $form = $this->createForm(TaskType::class, $task);
-    //     $form->handleRequest($request);
-
-    //     if ($form->isSubmitted() && $form->isValid()) {
-    //         $task->setPublished(new \DateTime());
-    //         $entityManager = $this->getDoctrine()->getManager();
-    //         $entityManager->persist($task);
-    //         $entityManager->flush();
-
-    //         return $this->redirectToRoute('task_index', [], Response::HTTP_SEE_OTHER);
-    //     }
-
-    //     return $this->renderForm('task/new.html.twig', [
-    //         'task' => $task,
-    //         'form' => $form,
-    //     ]);
-    // }
 
     #[Route('/{id}', name: 'task_show', methods: ['GET'])]
     public function show(Task $task): Response
