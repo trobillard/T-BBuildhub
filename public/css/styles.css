@@ -104,6 +104,11 @@ textarea {
     margin: 0;
     padding: 0;
 }
+
+main{
+    min-height: 100vh;
+}
+
 .mainbg{
     background: #000;
 }
@@ -126,6 +131,23 @@ h2, p{
 }
 
 footer{
+    background: #000;
+}
+
+/*button footer*/
+#monBoutton {
+    color: #ffffff;
+    background: #000;
+    
+}
+
+#chevron ion-icon{
+    top: 90%;
+    position: fixed;
+    width: 5%;
+    height: 5%;
+    margin-left: 2em;
+    color: rgb(255, 153, 0);
     background: #000;
 }
 
@@ -179,6 +201,10 @@ footer{
 /* ##########################   NAVBAR   ########################### */
 #nav{
     background: rgb(34, 33, 33);
+    /* position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 100; */
 }
 
 .navbar-brand{
@@ -310,6 +336,11 @@ button .buttonnav{
     color: #fff;
 }
 /* ##########################   FOOTER  ########################### */
+#footer{
+    background: rgb(34, 33, 33);
+    list-style: none;
+}
+
 .footer-area{
     margin-top:100px;
     /* padding:100px 0; */

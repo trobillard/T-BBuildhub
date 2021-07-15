@@ -1,8 +1,79 @@
 {% if app.user %}
 <footer>
-    <section class="text-center my-5">
-        <p>© 2021 TㅆB BuildHub. ALL RIGHTS RESERVED.<img src="{{ asset('img/logo-2.png') }}" alt="logo"></p>
+    <section id="footer">
+        <div class="footerContent">
+            <div class="col">
+                <ul>
+                    <li class="title alpha">Information</li>
+                    <li>
+                        <a href="#">Sitemap</a>
+                    </li>
+                    <li>
+                        <a href="#">Terms & Conditions</a>
+                    </li>
+                    <li>
+                        <a href="#">Privacy Policy</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="col">
+                <ul>
+                    <li class="title alpha">Work with us</li>
+                    <li>
+                        <a href="#">Content Partners</a>
+                    </li>
+                    <li>
+                        <a href="#">Advertise</a>
+                    </li>
+                    <li>
+                        <a href="#">Webmasters</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="col">
+                <ul>
+                    <li class="title alpha">Support and Help</li>
+                    <li>
+                        <a href="#">FAQ</a>
+                    </li>
+                    <li>
+                        <a href="#">Contact Support</a>
+                    </li>
+                    <li>
+                        <a href="#">Content Removal</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="col">
+                <ul>
+                    <li class="title alpha">Discover</li>
+                    <li>
+                        <a href="#">Mobile</a>
+                    </li>
+                    <li>
+                        <a href="#">Insights Blog</a>
+                    </li>
+                    <li>
+                        <a href="#">More</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
     </section>
+    <section class="text-center my-5">
+        <div class="logoFooterWrapper homePageFooter">
+            <div class="socialIconWrapper">
+                <a href="#" target="blank"><ion-icon name="logo-github"></ion-icon></a>
+                <a href="#" target="blank"><ion-icon name="logo-gitlab"></ion-icon></a>
+                <a href="#" target="blank"><ion-icon name="logo-twitter"></ion-icon></a>
+                <a href="#" target="blank"><ion-icon name="logo-linkedin"></ion-icon></a>
+            </div>
+        <p>© 2021 TㅆB BuildHub. ALL RIGHTS RESERVED.<img src="{{ asset('img/logo-2.png') }}" alt="logo"></p>
+        </div>
+    </section>
+     <div id="chevron">
+            <ion-icon name="chevron-up-outline" type="button" value="remonter" id="monBouton"></ion-icon>
+        </div>
 </footer>
 {% else %}
 {% endif %}
