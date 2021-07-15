@@ -20,8 +20,9 @@
       {# {% endfor %} #}
   {# {% endfor %} #}
   {# Afficher tous les messages flash en session pour l utilisateur connectes #}
+  <div class="row">
     {% for project in projects %}
-    <div class="card text-center my-5" id="cardtestorange" style="width: 50rem;">
+    <div class="card text-center my-5 me-4 col-sm-12 col-md-6 col-lg-4 p-4" id="cardtestorange" style="width: 15rem;">
     <div class="card-header">
       <h4 class="card-title">{{project.title}}</h4>
       <h5 class="card-title">Created the : {{project.createdate|date('d/m/Y')}}</h5>
@@ -41,6 +42,6 @@
   </div>
 </div>
   {# <img src="..." class="card-img-top" alt="..."> #}
-   
     {% endfor %}
+</div>
 {% endblock %}

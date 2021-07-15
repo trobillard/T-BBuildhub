@@ -5,7 +5,7 @@
 {% block body %}
 
 <div class="example-wrapper mainbg">
-{# <div class="card text-center">
+<div class="card text-center">
   <div class="card-header">
     <ul class="nav nav-tabs card-header-tabs">
       <li class="nav-item">
@@ -21,13 +21,13 @@
   </div>
   <div class="card-body">
     <h5 class="card-title">{{project.title}}</h5>
-    <p class="card-text">{{project.description}}</p>
-    <a href="#" class="btn btn-primary">Go somewhere</a>
+    <p class="card-text text-dark">{{project.description}}</p>
+    {# <a href="#" class="btn btn-primary">Go somewhere</a> #}
     <div class="card-footer text-muted">
     Created the : {{project.createdate|date('d/m/Y')}}
   </div>
   </div>
-</div> #}
+</div>
     <h2>Tasks</h2>
 
 
@@ -39,10 +39,11 @@
       {# {% endfor %} #}
   {# {% endfor %} #}
   {# Afficher tous les messages flash en session pour l utilisateur connectes #}
-    {% for task in tasks %}
+  
+    {% for task in project.tasks %}
     <div class="card text-center my-5" id="cardtestorange" style="width: 50rem;">
     <div class="card-header">
-      <h4 class="card-title">{{task.title}} {{ task.status ? 'Yes' : 'No' }}</h4>
+      <h4 class="card-title">{{task.title}} ({{ task.status ? 'In progress' : 'Done' }})</h4>
       <h5 class="card-title">Create the : {{task.published|date('d/m/Y')}}</h5>
     </div>
     <div class="card-body">
@@ -59,7 +60,31 @@
   {# <img src="..." class="card-img-top" alt="..."> #}
    
     {% endfor %}
-    <div>
+    
+    {# <div>
         <a href="{{ path('task_new') }}" class="btn text-white">Create new</a>
+    </div> #}
+
+  <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+  New Task
+</button>
+
+   <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">New Task</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+     {{form(form)}}
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close without saving</button>
+      </div>
     </div>
+  </div>
+</div>
+
 {% endblock %}
