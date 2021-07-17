@@ -17,7 +17,10 @@ class TaskType extends AbstractType
             // ->add('published')
             ->add('content')
             ->add('deadline')
-            ->add('status')
+            // ->add('status')
+            ->add('status', null, [
+                "label" => "Pending",
+            ])
             // ->add('project')
             ->add('Send', SubmitType::class, [
                 "attr" => ["class" => "btn text-white"],

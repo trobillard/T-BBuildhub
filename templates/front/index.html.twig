@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello FrontController!{% endblock %}
+{% block title %}TㅆB Build Project Home{% endblock %}
 
 {% block body %}
 <style>
@@ -9,9 +9,9 @@
 </style>
 
 <div class="example-wrapper mainbg">
-    <h2>Project</h2>
-
-
+  <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#exampleModal">
+    New Project
+  </button>
    {# {% for label, messages in app.flashes %} #}
       {# {% for message in messages %} #}
       {# <div class="alert alert-success {{ label }}"> #}
@@ -49,4 +49,20 @@
 
     {% endfor %}
 </div>
+   <div class="modal fade " id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">New Project</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+     {{form(form)}}
+
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
 {% endblock %}

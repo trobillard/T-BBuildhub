@@ -223,8 +223,8 @@ footer{
     font-size: 1.8rem;
 }
 
-a, li, ul, .welcome{
-    color: rgb(255, 153, 0) !important;
+a, li, ul{
+    color: rgb(255, 153, 0);
     z-index: 100;
 }
 

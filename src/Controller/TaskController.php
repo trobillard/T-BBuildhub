@@ -47,28 +47,6 @@ class TaskController extends AbstractController
         ]);
     }
 
-    #[Route('/{id}', name: 'task_show', methods: ['GET'])]
-    public function show(ProjectRepository $projectRepository, Task $task, int $id): Response
-    {
-        $project=$projectRepository->find($id);
-        $task->setProject($project);
-
-        return $this->render('task/show.html.twig', [
-            'task' => $task,
-            'tasks' => $taskRepository->find($id),
-            "project" => $project,
-        ]);
-    }
-
-    // #[Route('/front/project/{id}', name: 'single', requirements: ["id"=>"\d+"])]
-    // public function single(int $id=1, ProjectRepository $projectRepository): Response
-    // {
-    //     $project = $projectRepository->find($id);
-    //     return $this->render('front/single.html.twig', [
-    //         "project" => $project
-    //     ]);
-    // }
-
     #[Route('/{id}/edit', name: 'task_edit', methods: ['GET', 'POST'])]
     public function edit(int $id, Request $request, Task $task): Response
     {
@@ -78,7 +56,7 @@ class TaskController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $this->getDoctrine()->getManager()->flush();
 
-            return $this->redirectToRoute('index', [], Response::HTTP_SEE_OTHER);
+            return $this->redirectToRoute('task_index', ["id"=>$task->getProject()->getId()]);
         }
 
         return $this->renderForm('task/edit.html.twig', [
@@ -86,7 +64,7 @@ class TaskController extends AbstractController
             'form' => $form,
         ]);
     }
-  
+///////////////////////////////////////////////////////////////////////////////////   
     #[Route('/{id}', name: 'task_delete', methods: ['POST'])]
     public function delete(Request $request, Task $task): Response
     {
@@ -111,5 +89,27 @@ class TaskController extends AbstractController
     //     }
 
     //     return $this->redirectToRoute('index', [], Response::HTTP_SEE_OTHER);
+    // }
+
+    #[Route('/{id}', name: 'task_show', methods: ['GET'])]
+    public function show(ProjectRepository $projectRepository, Task $task, int $id): Response
+    {
+        $project=$projectRepository->find($id);
+        $task->setProject($project);
+
+        return $this->render('task/show.html.twig', [
+            'task' => $task,
+            'tasks' => $taskRepository->find($id),
+            "project" => $project,
+        ]);
+    }
+
+    // #[Route('/front/project/{id}', name: 'single', requirements: ["id"=>"\d+"])]
+    // public function single(int $id=1, ProjectRepository $projectRepository): Response
+    // {
+    //     $project = $projectRepository->find($id);
+    //     return $this->render('front/single.html.twig', [
+    //         "project" => $project
+    //     ]);
     // }
 }
