@@ -35,13 +35,18 @@
     <span></span>
     <span></span>
     <span></span>
-    Task</a>
+    Go to the Task</a>
   </div>
   <div class="card-footer text-muted">
     Deadline : {{project.deadline|date('d/m/Y')}}
   </div>
+  <div>
+    <a href="{{ path('single', {'id': project.id}) }}" class="btn text-white">Show</a>
+    {# <a href="{{ path('delete', {'id': project.id}) }}" class="btn text-white">Delete</a> #}
+   </div>
 </div>
   {# <img src="..." class="card-img-top" alt="..."> #}
+
     {% endfor %}
 </div>
 {% endblock %}

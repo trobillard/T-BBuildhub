@@ -55,11 +55,43 @@ class FrontController extends AbstractController
     }
 
     #[Route('/front/project/{id}', name: 'single', requirements: ["id"=>"\d+"])]
-    public function single(int $id=1, ProjectRepository $projectRepository): Response
+    public function single(int $id, ProjectRepository $projectRepository): Response
     {
         $project = $projectRepository->find($id);
         return $this->render('front/single.html.twig', [
             "project" => $project
         ]);
+    }
+
+    #[Route('/front/{id}/edit', name: 'edit', methods: ['GET', 'POST'])]
+    public function edit(int $id, Request $request, ProjectRepository $projectRepository): Response
+    {   
+        $project = $projectRepository->find($id);
+        $form = $this->createForm(ProjectType::class, $project);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $this->getDoctrine()->getManager()->flush();
+
+            return $this->redirectToRoute('index', [], Response::HTTP_SEE_OTHER);
+        }
+
+        return $this->renderForm('front/edit.html.twig', [
+            "project" => $project,
+            'form' => $form,
+        ]);
+    }
+
+    #[Route('front/{id}', name: 'delete', methods: ['POST'])]
+    public function delete(int $id,Request $request, ProjectRepository $projectRepository): Response
+    {
+        $project = $projectRepository->find($id);
+        if ($this->isCsrfTokenValid('delete'.$project->getId(), $request->request->get('_token'))) {
+            $entityManager = $this->getDoctrine()->getManager();
+            $entityManager->remove($project);
+            $entityManager->flush();
+        }
+
+        return $this->redirectToRoute('index', [], Response::HTTP_SEE_OTHER);
     }
 }

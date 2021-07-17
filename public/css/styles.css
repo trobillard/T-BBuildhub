@@ -148,7 +148,7 @@ footer{
     height: 5%;
     margin-left: 2em;
     color: rgb(255, 153, 0);
-    background: #000;
+    background: none !important;
 }
 
 /*Popup*/

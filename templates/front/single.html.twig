@@ -15,7 +15,11 @@
         <div class="card-footer text-muted">
             Deadline : {{project.deadline|date('d/m/Y')}}
         </div>
-    </div>
+        <div>
+        <a href="{{ path('index') }}" class="btn text-white">back to list</a>
+        <a href="{{ path('edit', {'id': project.id}) }}" class="btn text-white">edit</a>
+        </div>
+    </div> 
 </div>
   
     {# <h2>Answers</h2> #}
