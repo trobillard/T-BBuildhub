@@ -24,7 +24,7 @@ class ProjectType extends AbstractType
             ])
             // ->add('create_date')
             ->add('Send', SubmitType::class, [
-                "attr" => ["class" => "btn text-dark"],
+                "attr" => ["class" => "btn3"],
                 'row_attr' => ['class' =>'text-center']
             ])
         ;

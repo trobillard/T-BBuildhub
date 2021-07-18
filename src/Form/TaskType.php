@@ -32,7 +32,7 @@ class TaskType extends AbstractType
             ])
             // ->add('project')
             ->add('Send', SubmitType::class, [
-                "attr" => ["class" => "btn text-white"],
+                "attr" => ["class" => "btn3"],
                 'row_attr' => ['class' =>'text-center']
             ])
         ;
