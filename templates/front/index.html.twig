@@ -12,17 +12,20 @@
   <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#exampleModal">
     New Project
   </button>
-   {# {% for label, messages in app.flashes %} #}
-      {# {% for message in messages %} #}
-      {# <div class="alert alert-success {{ label }}"> #}
-        {# {{ message }} #}
-      {# </div> #}
-      {# {% endfor %} #}
-  {# {% endfor %} #}
+
+   {% for label, messages in app.flashes %}
+      {% for message in messages %}
+      <div class="alert alert-light my-5 {{ label }}">
+        {{ message }}
+      </div>
+      {% endfor %}
+  {% endfor %}
   {# Afficher tous les messages flash en session pour l utilisateur connectes #}
+
+
   <div class="row">
     {% for project in projects %}
-    <div class="card text-center my-5 me-4 col-sm-12 col-md-6 col-lg-4 p-4" id="cardtestorange" style="width: 15rem;">
+    <div class="card text-center my-3 me-4 col-sm-12 col-md-6 col-lg-4 p-4" id="cardtestorange" style="width: 15rem;">
     <div class="card-header">
       <h4 class="card-title">{{project.title}}</h4>
       <h5 class="card-title">Created the : {{project.createdate|date('d/m/Y')}}</h5>
@@ -32,7 +35,7 @@
     <a href="{{path('task_index', {id:project.id})}}" class="btn1">Go to the Task</a>
   </div>
   <div class="card-footer text-muted">
-    Deadline : {{project.deadline|date('d/m/Y')}}
+    Deadline : {{project.deadline|date('d/m/Y')}}</br>
   </div>
   <div>
     <a href="{{ path('single', {'id': project.id}) }}" class="btn1">Show</a>

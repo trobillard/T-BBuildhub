@@ -34,7 +34,7 @@ class FrontController extends AbstractController
             $entityManager->flush();
             $this->addFlash(
                 "success",
-                "your subject was opened, you just need to wait any answers"
+                "Your Project was created"
             );
             return $this->redirectToRoute('index');
         }
@@ -42,6 +42,7 @@ class FrontController extends AbstractController
         return $this->render('front/index.html.twig', [
             "form" => $form->createView(),
             'projects' => $projects,
+            
         ]);
     }
 
@@ -55,6 +56,10 @@ class FrontController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             $this->getDoctrine()->getManager()->flush();
+            $this->addFlash(
+                "success",
+                "Your Project was modified"
+            );
 
             return $this->redirectToRoute('index', [], Response::HTTP_SEE_OTHER);
         }
@@ -75,6 +80,10 @@ class FrontController extends AbstractController
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->remove($project);
             $entityManager->flush();
+            $this->addFlash(
+                "success",
+                "Your Project was deleted"
+            );
         }
 
         return $this->redirectToRoute('index', [], Response::HTTP_SEE_OTHER);

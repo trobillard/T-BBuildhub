@@ -4,6 +4,8 @@ namespace App\Entity;
 
 use App\Repository\TaskRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\Common\Collections\Collection;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass=TaskRepository::class)
@@ -34,6 +36,15 @@ class Task
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank(
+     *      message = "You must write something in {{ label }}"
+     * )
+     * @Assert\Length(
+     *      min = 5,
+     *      max = 255,
+     *      minMessage = "Your task must be at least {{ limit }} characters long",
+     *      maxMessage = "Your task cannot be longer than {{ limit }} characters"
+     * )
      */
     private $title;
 

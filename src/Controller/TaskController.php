@@ -33,6 +33,10 @@ class TaskController extends AbstractController
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($task);
             $entityManager->flush();
+            $this->addFlash(
+                "success",
+                "Your Task was created"
+            );
             return $this->redirectToRoute('task_index', ["id"=>$task->getProject()->getId()]);
             
         }
@@ -52,6 +56,10 @@ class TaskController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             $this->getDoctrine()->getManager()->flush();
+            $this->addFlash(
+                "success",
+                "Your Task was modified"
+            );
 
             return $this->redirectToRoute('task_index', ["id"=>$task->getProject()->getId()]);
         }

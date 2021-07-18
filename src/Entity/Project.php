@@ -6,6 +6,7 @@ use App\Repository\ProjectRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass=ProjectRepository::class)
@@ -21,11 +22,29 @@ class Project
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank(
+     *      message = "You must write something in {{ label }}"
+     * )
+     * @Assert\Length(
+     *      min = 5,
+     *      max = 255,
+     *      minMessage = "Your subject must be at least {{ limit }} characters long",
+     *      maxMessage = "Your subject cannot be longer than {{ limit }} characters"
+     * )
      */
     private $title;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank(
+     *      message = "You must write something in {{ label }}"
+     * )
+     * @Assert\Length(
+     *      min = 20,
+     *      max = 255,
+     *      minMessage = "Your description must be at least {{ limit }} characters long",
+     *      maxMessage = "Your description cannot be longer than {{ limit }} characters"
+     * )
      */
     private $description;
 

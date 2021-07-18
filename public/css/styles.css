@@ -416,7 +416,8 @@ a:hover{
     border-radius: 10%;
     color:#000;
     z-index:9999;
-    margin-bottom: 1em;
+    margin-bottom: 0.5em !important;
+    margin-top: 0.5em !important;
     padding: 0.3em;
     min-width: 10%;
 }
