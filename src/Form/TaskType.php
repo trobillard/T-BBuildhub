@@ -7,6 +7,8 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+use Symfony\Component\Form\Extension\Core\Type\DateType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 
 class TaskType extends AbstractType
 {
@@ -16,10 +18,17 @@ class TaskType extends AbstractType
             ->add('title')
             // ->add('published')
             ->add('content')
-            ->add('deadline')
+            ->add('deadline', DateType::class, [
+                'placeholder' => [
+                    'year' => 'Year', 'month' => 'Month', 'day' => 'Day',
+                ]
+            ])
             // ->add('status')
-            ->add('status', null, [
-                "label" => "Pending",
+            ->add('status',ChoiceType::class, [
+                'choices'  => [
+                    'Pending' => '1',
+                    'Done' => '0',
+                ],
             ])
             // ->add('project')
             ->add('Send', SubmitType::class, [

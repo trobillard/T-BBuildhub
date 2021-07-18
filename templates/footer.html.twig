@@ -1,5 +1,11 @@
 {% if app.user %}
 <footer>
+<div class="footerContentWrapper">
+    <h2 class="footer-title"></h2>
+    <p class="footer"> The TㅆB BuildHub team is always updating and adding more option every day. It's all here and 100% free Work.
+    We have a huge free  work selection that you can update. TㅆB BuildHub is the most complete and revolutionary todo site.
+    We offer todo work and the number 1 free todo list community on the net. We're always working towards adding more features
+    that will keep your love for work alive and well. Send us feedback if you have any questions/comments.</p>
     <section id="footer">
         <div class="footerContent">
             <div class="col">
@@ -68,12 +74,16 @@
                 <a href="#" target="blank"><ion-icon name="logo-twitter"></ion-icon></a>
                 <a href="#" target="blank"><ion-icon name="logo-linkedin"></ion-icon></a>
             </div>
-        <p>© 2021 TㅆB BuildHub. ALL RIGHTS RESERVED.<img src="{{ asset('img/logo-2.png') }}" alt="logo"></p>
+        <span class="copyright">© 2021 TㅆB BuildHub. ALL RIGHTS RESERVED.</span>
+        <div class="rta">
+        <img src="{{ asset('img/logo-2.png') }}" alt="logo">
+        </div>
         </div>
     </section>
      <div id="chevron">
             <ion-icon name="chevron-up-outline" type="button" value="remonter" id="monBouton"></ion-icon>
         </div>
+    </div>
 </footer>
 {% else %}
 {% endif %}

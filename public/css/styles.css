@@ -200,7 +200,7 @@ footer{
 
 /* ##########################   NAVBAR   ########################### */
 #nav{
-    background: rgb(34, 33, 33);
+    background: #151515;
     /* position: fixed;
     top: 0;
     width: 100%;
@@ -336,10 +336,122 @@ button .buttonnav{
     color: #fff;
 }
 /* ##########################   FOOTER  ########################### */
-#footer{
-    background: rgb(34, 33, 33);
-    list-style: none;
+.footerContentWrapper{
+    display: grid;
 }
+
+.footer-title{
+    font-weight: 700;
+    color: #666;
+    text-align: center;
+}
+
+.footer{
+    clear: both;
+    padding: 5px 0 0;
+    color: #666;
+    text-align: center;
+    line-height: 18px;
+}
+
+
+#footer{
+    background: #151515;
+    list-style: none;
+    border-top: 1px solid #292929;
+    width: 100%;
+    min-height: 175px;
+    margin: 30px 0 20px;
+}
+
+.footerContentWrapper #footer .footerContent{
+    display: grid;
+    grid-template-columns: repeat(4,25%);
+    margin: auto;
+}
+
+.footerContentWrapper #footer .footerContent .col{
+    width: 100%;
+}
+
+#footer .footerContent .col{
+    float: left;
+}
+
+ul{
+    list-style-type: none;
+}
+
+.footerContentWrapper #footer .footerContent .col ul li.title {
+    font-size: 1.33em;
+    font-weight: 700;
+    color: grey;
+}
+
+.footerContentWrapper .logoFooterWrapper {
+    width: 330px;
+    height: 62px;
+    display: grid;
+    grid-template-columns: auto 120px;
+    grid-column-gap: 8px;
+    justify-content: center;
+    align-content: center;
+    margin-bottom: 10px;
+}
+
+.footerContentWrapper .logoFooterWrapper.homePageFooter .socialIconsWrapper {
+    display: block;
+}
+
+.footerContentWrapper .logoFooterWrapper .copyright {
+    align-self: center;
+    margin: 0;
+}
+
+.logoFooterWrapper .copyright {
+    float: right;
+    color: #666;
+    margin: 8px 0 0 8px;
+    font-size: 12px;
+}
+
+.footerContentWrapper .logoFooterWrapper .rta {
+    width: 100%;
+    margin: 0;
+}
+
+.footerContentWrapper .logoFooterWrapper.homePageFooter {
+    grid-template-columns: 65% auto 120px;
+}
+
+.fluidContainer .logoFooterWrapper {
+    min-width: 950px;
+    max-width: 1325px;
+    width: 96%;
+}
+
+.footerContentWrapper .logoFooterWrapper {
+    height: 62px;
+    display: grid;
+    grid-column-gap: 8px;
+    justify-content: center;
+    align-content: center;
+    margin-bottom: 10px;
+}
+
+/* .footerContentWrapper .logoFooterWrapper a {
+    display: grid;
+    grid-template-columns: repeat(2,88px);
+    grid-column-gap: 10px;
+}
+
+.logoFooterWrapper .rta {
+    width: 88px;
+    height: 31px;
+    float: left;
+    cursor: pointer;
+    margin-left: 10px;
+} */
 
 .footer-area{
     margin-top:100px;

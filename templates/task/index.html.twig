@@ -7,7 +7,9 @@
 <div class="example-wrapper mainbg my-5">
 <div class="card text-center">
   <div class="card-header">
-    <ul class="nav nav-tabs card-header-tabs">
+    <h2 class="card-title text-dark">{{project.title}}</h2>
+    <p class="text-muted">Created the : {{project.createdate|date('d/m/Y')}}</p>
+    {# <ul class="nav nav-tabs card-header-tabs">
       <li class="nav-item">
         <a class="nav-link active" aria-current="true" href="#">Active</a>
       </li>
@@ -17,17 +19,14 @@
       <li class="nav-item">
         <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
       </li>
-    </ul>
+    </ul> #}
   </div>
   <div class="card-body">
-    <h5 class="card-title">{{project.title}}</h5>
     <p class="card-text text-dark">{{project.description}}</p>
-    {# <a href="#" class="btn btn-primary">Go somewhere</a> #}
     <div class="card-footer text-muted">
-    Created the : {{project.createdate|date('d/m/Y')}}
+    Deadline : {{project.deadline|date('d/m/Y')}}
   </div>
-  Deadline : {{project.deadline|date('d/m/Y')}}
-  </div>
+</div>
 </div>
 
 <button type="button" class="btn my-5" data-bs-toggle="modal" data-bs-target="#exampleModal">
@@ -50,10 +49,7 @@
     </div>
     <div class="card-body">
     <p class="card-text">{{task.content}}</p>
-    {# <a href="{{path('task_index', { id: project.id}) }}" class="btn text-white">Task</a> #}
-    {# <a href="{{ path('task_show', {'id': task.id}) }}" class="btn text-white">show</a> #}
     <button type="button" class="btn"><a href="{{ path('task_edit', {'id': task.id}) }}" class="btn text-white">Edit</a></button>
-    {#{id: subject.id} me permet d aller sur l ID du sujet sur lequel on a clique  #}
   </div>
 </div>
 

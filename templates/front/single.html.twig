@@ -5,13 +5,13 @@
 {% block body %}
 {# Card displaying the project #}
 <div class="example-wrapper mainbg">
-    <div class="card text-center my-5" id="cardtestorange" style="width: 50rem;">
+    <div class="card text-center my-5" id="cardtestorange" style="width: 80rem; min-height: 30rem">
         <div class="card-header">
             <h2>{{project.title}}</h2>
-            <h5 class="card-title">Create the : {{project.createdate|date('d/m/Y')}}</h5>
+            <h5 class="card-title text-muted">Created the : {{project.createdate|date('d/m/Y')}}</h5>
         </div>
         <div class="card-body">
-            <p class="card-text">{{project.description}}</p>
+            <p class="card-text text-dark">{{project.description}}</p>
         </div>
         <div class="card-footer text-muted">
             Deadline : {{project.deadline|date('d/m/Y')}}
@@ -26,7 +26,7 @@
           </form>
         </div>
     </div> 
-    <a href="{{ path('index') }}" class="btn text-white">back to list</a>
+    <a href="{{ path('index') }}" class="btn text-white">Back to list</a>
 </div>
   
   
