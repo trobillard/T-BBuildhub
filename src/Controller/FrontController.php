@@ -23,6 +23,7 @@ class FrontController extends AbstractController
     {
         $projectRepository = $this->getDoctrine()->getRepository(Project::class);
         $projects = $this->getUSer()->getProjects();
+        // $projectRepository->getProjects();
         $project = new Project();
         $form = $this->createForm(ProjectType::class, $project);
         $form->handleRequest($request);
@@ -42,7 +43,7 @@ class FrontController extends AbstractController
         return $this->render('front/index.html.twig', [
             "form" => $form->createView(),
             'projects' => $projects,
-            
+            // 'projectRepository' => $projectRepository,
         ]);
     }
 
