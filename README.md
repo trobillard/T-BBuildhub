@@ -1,4 +1,4 @@
-Application de gestion de projet sous Symfony (ou todolist)
+# Application de gestion de projet sous Symfony (ou todolist)
 
 Il s'agit d'une application développée dans le cadre de mon poste de formateur en développement web. L'objectif est que les apprenants produisent une application bancaire permettant à un utilisateur de gérer ses comptes à l'aide du framework Symfony.
 
@@ -19,7 +19,7 @@ Jusqu’à maintenant, les conducteurs de travaux de ce client utilisent des cah
 
 Le problème avec ce système, bien que fonctionnel, est qu’il est coûteux, peu sécurisé et demande de la place. Le client souhaite donc développer une application permettant à ses conducteurs de travaux de gérer leurs projets de manière informatisée.
 
-Spécifications fonctionnelles :
+# Spécifications fonctionnelles :
 
 Pour ce faire, vous devez concevoir une application qui permet à l’utilisateur de :
 
@@ -49,7 +49,8 @@ Un schéma de type UseCase et une arborescence fonctionnelle de l’application 
 Un schéma de base de données listant les tables, leur contenu, leurs relations et les cardinalités
 Un diagramme de classes qui liste les entité de votre applications, leur contenu et leurs relations
 Les wireframes de l’application qui spécifient à minima le template et la page principale pour les version mobiles, tablettes et PC
-Spécifications techniques :
+
+# Spécifications techniques :
 
 Framework Symfony 5
 Sécurité de l’application gérée avec le bundle de sécurité Symfony
