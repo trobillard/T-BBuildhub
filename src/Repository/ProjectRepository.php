@@ -35,7 +35,7 @@ class ProjectRepository extends ServiceEntityRepository
         ;
     }
     */
-    public function getProjects() {
+    public function getProjects(User $user) {
         return $this->createQueryBuilder('s')
         // Creation QueryBuilder table sujet
             // ->andWhere('s.exampleField = :val')
@@ -45,7 +45,7 @@ class ProjectRepository extends ServiceEntityRepository
             ->addSelect('u')
             // ->andWhere('s.user= :val')
             ->orderBy('s.deadline', 'DESC')
-            // ->setParameter('val', $user)
+            ->setParameter('val', $user)
             // Avoir une organisation descendante
             // ->setMaxResults(2)
             // Pour limiter le nombre d'affichage a 5
