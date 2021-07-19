@@ -1,4 +1,4 @@
-Application de gestion de projet sous Symfony (ou todolist)
+#Application de gestion de projet sous Symfony (ou todolist)
 
 Il s'agit d'une application développée dans le cadre de mon poste de formateur en développement web. L'objectif est que les apprenants produisent une application bancaire permettant à un utilisateur de gérer ses comptes à l'aide du framework Symfony.
 
