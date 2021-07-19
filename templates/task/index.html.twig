@@ -29,20 +29,33 @@
       </div>
       {% endfor %}
   {% endfor %}
-  {# Afficher tous les messages flash en session pour l utilisateur connectes #}
-  <div class="row">
+ <div class="row">
     {% for task in project.tasks %}
+      {% if task.status is same as true %}
     <div class="card text-center my-5 me-2 col-sm-12 col-md-6 col-lg-4 p-4" id="cardtestorange" style="width: 25rem;">
     <div class="card-header">
       <h4 class="card-title">{{task.title}} ({{ task.status ? 'Pending' : 'Done' }})</h4>
       <h5 class="card-title">Create the : {{task.published|date('d/m/Y')}}</h5>
+      <p class="card-text">Due date :{{task.deadline|date('d/m/Y')}}</p>
     </div>
     <div class="card-body">
     <p class="card-text">{{task.content}}</p>
     <button type="button" class="btn1"><a href="{{ path('task_edit', {'id': task.id}) }}" class="text-dark">Edit</a></button>
   </div>
 </div>
-
+  {% else %}
+  <div class="card text-center my-5 me-2 col-sm-12 col-md-6 col-lg-4 p-4" id="cardtestbleu" style="width: 25rem;">
+    <div class="card-header">
+      <h4 class="card-title">{{task.title}} ({{ task.status ? 'Pending' : 'Done' }})</h4>
+      <h5 class="card-title">Create the : {{task.published|date('d/m/Y')}}</h5>
+      <p class="card-text">Due date :{{task.deadline|date('d/m/Y')}}</p>
+    </div>
+    <div class="card-body">
+    <p class="card-text">{{task.content}}</p>
+    <button type="button" class="btn1"><a href="{{ path('task_edit', {'id': task.id}) }}" class="text-dark">Edit</a></button>
+  </div>
+</div>
+  {% endif %}
     {% endfor %}
 </div>
 <a href="{{ path('index') }}" class="btn">Back to list</a>
